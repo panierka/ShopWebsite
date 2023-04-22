@@ -1,14 +1,22 @@
-from flask import Flask
+from fastapi import FastAPI
+import data_access as da
 
-app = Flask(__name__)
+import uvicorn
+
+app = FastAPI()
 
 
-@app.route('/message')
+@app.get('/message')
 def get_message():
     return {
         'message': 'test'
     }
 
 
+@app.get('/get-items')
+async def get_items():
+    return await da.get_all_items()
+
+
 if __name__ == '__main__':
-    app.run()
+    uvicorn.run(app, host='127.0.0.1', port=8000)
