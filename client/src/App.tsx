@@ -7,6 +7,8 @@ import {Footer} from "./components/footer"
 import {Admin} from "./pages/admin/admin";
 import {Cart} from "./pages/cart/cart";
 import {Shop} from "./pages/shop/shop";
+import { ItemDisplay } from './components/itemDisplay';
+import { ItemsGallery } from './components/itemsGallery';
 
 function App() {
 
@@ -36,7 +38,8 @@ function App() {
           <Route path="/cart" element={<Cart />}/>
           <Route path="/admin" element={<Admin />} />
         </Routes>
-
+        
+        <ItemsGallery/>
         <h1>{data.message}</h1>
         <Footer />
       </Router>      
