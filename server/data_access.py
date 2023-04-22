@@ -11,7 +11,7 @@ auth = {
     'pass': os.getenv('DB_PASS')
 }
 
-db_factory = DbContextFactory(url, auth)
+db_factory = DbContextFactory(url, auth, namespace='test', database='test')
 
 
 async def get_all_items():
