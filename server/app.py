@@ -1,9 +1,10 @@
 from fastapi import FastAPI
-import data_access as da
-
 import uvicorn
+from routers import shop_items
+
 
 app = FastAPI()
+app.include_router(shop_items.router)
 
 
 @app.get('/message')
@@ -11,11 +12,6 @@ def get_message():
     return {
         'message': 'test'
     }
-
-
-@app.get('/get-items')
-async def get_items():
-    return await da.get_all_items()
 
 
 if __name__ == '__main__':

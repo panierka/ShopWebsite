@@ -1,9 +1,12 @@
-from surrealdb import Surreal
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 import os
-from db_context import DbContextFactory, DbContext
+from db_context import DbContextFactory
+from datetime import datetime
+from fastapi import APIRouter
 
-load_dotenv('.env')
+router = APIRouter()
+
+load_dotenv(find_dotenv())
 url = os.getenv('DB_URL')
 
 auth = {
@@ -14,6 +17,7 @@ auth = {
 db_factory = DbContextFactory(url, auth, namespace='test', database='test')
 
 
+@router.get('/get-items')
 async def get_all_items():
     async with db_factory.get_context() as ctx:
         items = await ctx.db.select('item')
