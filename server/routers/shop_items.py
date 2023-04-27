@@ -1,10 +1,7 @@
 from dotenv import load_dotenv, find_dotenv
 import os
 from db.db_context import DbContextFactory, DbContext
-from datetime import datetime
 from fastapi import APIRouter
-from surrealdb import Surreal
-import asyncio
 
 router = APIRouter()
 

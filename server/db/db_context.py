@@ -1,5 +1,4 @@
 import asyncio
-
 from surrealdb import Surreal
 
 
