@@ -1,8 +1,10 @@
 from dotenv import load_dotenv, find_dotenv
 import os
-from db_context import DbContextFactory
+from db.db_context import DbContextFactory, DbContext
 from datetime import datetime
 from fastapi import APIRouter
+from surrealdb import Surreal
+import asyncio
 
 router = APIRouter()
 
@@ -17,8 +19,9 @@ auth = {
 db_factory = DbContextFactory(url, auth, namespace='test', database='test')
 
 
-@router.get('/get-items')
+@router.get('/get-items', response_model=list[dict])
 async def get_all_items():
     async with db_factory.get_context() as ctx:
+        ctx: DbContext
         items = await ctx.db.select('item')
         return items

@@ -1,3 +1,5 @@
+import asyncio
+
 from surrealdb import Surreal
 
 
@@ -18,7 +20,7 @@ class DbContext:
         return self
 
     async def __aexit__(self, *args):
-        await self.db.close()
+        asyncio.ensure_future(self.db.close())
 
 
 class DbContextFactory:
