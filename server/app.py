@@ -1,10 +1,11 @@
 from fastapi import FastAPI
 import uvicorn
-from routers import shop_items
+from routers import shop_items, users
 
 
 app = FastAPI()
 app.include_router(shop_items.router)
+app.include_router(users.router)
 
 
 @app.get('/message')
