@@ -7,5 +7,5 @@ router = APIRouter()
 
 @router.post('/add-user')
 def add_user(form: NewAccountForm):
-    print('Email: {}.'
+    print('Email: {}'
           .format(form.email))
