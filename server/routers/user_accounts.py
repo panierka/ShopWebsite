@@ -1,6 +1,6 @@
 from db.db_context import db_factory, DbContext
 from fastapi import APIRouter
-from db.models.NewAccountForm import *
+from db.models.user_accounts_models import *
 
 router = APIRouter()
 
