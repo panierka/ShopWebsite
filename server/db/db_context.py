@@ -1,5 +1,7 @@
 import asyncio
 from surrealdb import Surreal
+from dotenv import load_dotenv, find_dotenv
+import os
 
 
 class DbContext:
@@ -32,3 +34,14 @@ class DbContextFactory:
     def get_context(self):
         db = DbContext(self.url, self.auth, self.namespace, self.database)
         return db
+
+
+load_dotenv(find_dotenv())
+url = os.getenv('DB_URL')
+
+auth = {
+    'user': os.getenv('DB_USER'),
+    'pass': os.getenv('DB_PASS')
+}
+
+db_factory = DbContextFactory(url, auth, namespace='test', database='test')

@@ -1,19 +1,7 @@
-from dotenv import load_dotenv, find_dotenv
-import os
-from db.db_context import DbContextFactory, DbContext
+from db.db_context import db_factory, DbContext
 from fastapi import APIRouter
 
 router = APIRouter()
-
-load_dotenv(find_dotenv())
-url = os.getenv('DB_URL')
-
-auth = {
-    'user': os.getenv('DB_USER'),
-    'pass': os.getenv('DB_PASS')
-}
-
-db_factory = DbContextFactory(url, auth, namespace='test', database='test')
 
 
 @router.get('/get-items', response_model=list[dict])
