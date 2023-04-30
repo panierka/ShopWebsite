@@ -27,7 +27,7 @@ export function SignUp(){
                     "email": values.email,
                     "password": values.password
                 })
-              })
+            })
         }
     });
 
@@ -37,11 +37,11 @@ export function SignUp(){
         <div>
             <label htmlFor="email">Email</label>
             <input
-            id="email"
-            name="email"
-            type="email"
-            value={formik.values.email}
-            onChange={formik.handleChange}
+                id="email"
+                name="email"
+                type="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
             />
             {formik.errors.email && formik.touched.email ? (
             <div>{formik.errors.email}</div>
@@ -50,11 +50,11 @@ export function SignUp(){
         <div>
             <label htmlFor="password">Password</label>
             <input
-            id="password"
-            name="password"
-            type="password"
-            value={formik.values.password}
-            onChange={formik.handleChange}
+                id="password"
+                name="password"
+                type="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
             />
             {formik.errors.password && formik.touched.password ? (
             <div>{formik.errors.password}</div>
@@ -63,11 +63,11 @@ export function SignUp(){
         <div>
             <label htmlFor="confirmPassword">Confirm password</label>
             <input
-            id="confirmPassword"
-            name="confirmPassword"
-            type="password"
-            value={formik.values.confirmPassword}
-            onChange={formik.handleChange}
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                value={formik.values.confirmPassword}
+                onChange={formik.handleChange}
             />
             {formik.errors.confirmPassword && formik.touched.confirmPassword ? (
             <div>{formik.errors.confirmPassword}</div>
