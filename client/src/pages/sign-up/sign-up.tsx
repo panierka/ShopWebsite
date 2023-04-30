@@ -11,7 +11,18 @@ export function SignUp(){
         },
 
         validationSchema: Yup.object({
-            email: Yup.string().email().required(),
+            email: Yup.string().email().required().test('unique', 'this email is already registered',
+                async (value) => {
+                    return await fetch('/user-exists', {
+                        method: 'POST',
+                        headers: {
+                          'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify({ email: value })})
+                            .then((res) => res.json())
+                            .then<boolean>((json) => !json['unique'])
+                }
+            ),
             password: Yup.string().min(6).required(),
             confirmPassword: Yup.string().oneOf([Yup.ref('password')], 'passwords must match').required()
         }),
